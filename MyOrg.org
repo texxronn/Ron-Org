@@ -4,7 +4,7 @@
 * Linux Notes
 ** Manjaro Notes
 *** Set Display Resolution 2K / 4K
-      Contents of .config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
+      File : .config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
       #+begin_src xml
         <!-- .config/xfce4/xfconf/xfce-perchannel-xml/displays.xml -->
         <?xml version="1.0" encoding="UTF-8"?>
@@ -79,4 +79,28 @@
     xrandr --addmode Virtual1 1160x1600_60.00
     xrandr --output  Virtual1 --mode 1160x1600_60.00
     #+end_src
+*** Automatic Add Resolution
+
+      File : /etc/X11/xorg.conf.d/10-monitor.conf
+      #+begin_src conf
+      Section "Monitor"
+          Identifier "HDMI1"
+          Modeline "3200x1800_30.00"  233.00  3200 3384 3720 4240  1800 1803 1808 1834 -hsync +vsync
+          Option "PreferredMode" "3200x1800_30.00"
+      EndSection
+
+      Section "Screen"
+          Identifier "Screen0"
+          Monitor "HDMI1"
+          DefaultDepth 24
+          SubSection "Display"
+              Modes "3200x1800_30.00"
+          EndSubSection
+      EndSection
+
+      Section "Device"
+          Identifier "Device0"
+          Driver "intel"
+      EndSection
+      #+end_src
 
