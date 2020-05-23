@@ -103,4 +103,13 @@
           Driver "intel"
       EndSection
       #+end_src
-
+*** Install Yay
+*** AUR Packages to Install
+     + google-chrome
+     + visual-studio-code-bin
+     + icaclient
+       #+begin_src bash
+       mkdir -p $HOME/.ICAClient/cache
+       cp /opt/Citrix/ICAClient/config/{All_Regions,Trusted_Region,Unknown_Region,canonicalization,regions}.ini $HOME/.ICAClient/
+       #+end_src
+     + hdx-realtime-media-engine
