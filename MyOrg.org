@@ -104,6 +104,11 @@
       EndSection
       #+end_src
 *** Install Yay
+     #+begin_src bash
+     sudo pacman -S git
+     git clone https://aur.archlinux.org/yay.git
+     cd yay; makepkg -si
+     #+end_src
 *** AUR Packages to Install
      + google-chrome
      + visual-studio-code-bin
@@ -113,3 +118,25 @@
        cp /opt/Citrix/ICAClient/config/{All_Regions,Trusted_Region,Unknown_Region,canonicalization,regions}.ini $HOME/.ICAClient/
        #+end_src
      + hdx-realtime-media-engine
+     + darktable
+     + gufw
+     + ttf-ms-fonts
+     + ttf-ms-win10
+     + traceroute
+     + network-tools
+     + tmux
+*** Reduce Swappiness
+    #+begin_src bash
+    echo "vm.swappiness=10" >> /etc/sysctl.d/100-manjaro.conf
+    #+end_src
+*** Enable TRIM
+     #+begin_src bash
+     sudo systemctl enable fstrim.timer
+     #+end_src
+*** Check for System Errors
+    #+begin_src bash
+    sudo systemctl --failed
+    sudo journalctl -p 3 -xb
+    #+end_src
+*** Add noatime, nodiratime to /etc/fstab
+*** Remove 'quiet' paramater from /etc/grub/grub.cfg
